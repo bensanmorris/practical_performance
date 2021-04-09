@@ -18,7 +18,7 @@ Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly id
 8. next, we'll normalise this data and fold all the call-graphs: `../../Flamegraph/stackcollapse-perf.pl out.perf > out.folded`
 9. now let's generate the flamegraph: `../../Flamegraph/flamegraph.pl out.folded > out.svg`
 10. you should now have an out.svg file in the current directory
-11. let's copy the out.svg from our container to our host, (in a separate shell), obtain your container's id: `docker ps` then: `docker cp your_container_name:/your/out.svg/location/out.svg .`
+11. let's copy the out.svg from our container to our host. In a separate shell (i.e. outside our container), obtain your running container's name: `docker ps` then: `docker cp your_container_name:/your/out.svg/location/out.svg .`
 12. open it in an svg viewer (a web browser for instance)
 
 # Memory profiling
