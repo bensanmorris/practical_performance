@@ -20,3 +20,10 @@ Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly id
 10. you should now have an out.svg file in the current directory
 11. let's copy the out.svg from our container to our host, (in a separate shell), obtain your container's id: `docker ps` then: `docker cp your_container_name:/your/out.svg/location/out.svg .`
 12. open it in an svg viewer (a web browser for instance)
+
+# Memory profiling
+
+## valgrind + massif
+
+1. `valgrind --tool=massif --xtree-memory=full ./your_gtest_app --gtest_filter=your_test_suite.your_test`
+2. once this completes you can view the output (massif.out.xxx) in the massif-visualizer and also view the xtmemory.kcg.xxx file in kcachegrind
