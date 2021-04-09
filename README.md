@@ -27,3 +27,9 @@ Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly id
 
 1. `valgrind --tool=massif --xtree-memory=full ./your_gtest_app --gtest_filter=your_test_suite.your_test`
 2. once this completes you can view the output (massif.out.xxx) in the massif-visualizer and also view the xtmemory.kcg.xxx file in kcachegrind
+
+## valgrind + memcheck
+
+1. `valgrind --tool=memcheck --xml=yes --xml-file=./output_file.xml --leak-check=full ./your_gtest_app --gtest_filter=your_test_suite.your_test`
+2. for a quick summary let's grab the python ValgrindCI tool: `python -m pip install ValgrindCI --user`
+3. for a summary: `valgrind-ci ./output_file.xml --summary` or to use it as part of CI and abort on errors: `valgrind-ci ./output_file.xml --abort-on-errors`
