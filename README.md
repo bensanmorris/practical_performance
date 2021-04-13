@@ -54,7 +54,7 @@ TODO - add worked example
 
 # Locating performance regressions in your google benchmark history
 
-[I've created a small python utility that generates a chart for each of your google benchmarks as a time series](https://github.com/bensanmorris/benchmark_monitor) (run it over your accumulated benchmark history data) but it also attempts to estimate the location of the build that introduced your slowdown using a sliding window. The first question you might ask about this is how do you deal with variability in machine peformance? [I have an idea and would love to hear your opinion!](https://groups.google.com/g/benchmark-discuss/c/MmXHeSlDXe4) I haven't yet tried it but will let you know how it goes when I get a chance.
+[I've created a small python utility that generates a chart for each of your google benchmarks as a time series](https://github.com/bensanmorris/benchmark_monitor) (run it over your accumulated benchmark history data) but it also attempts to estimate the location of the build that introduced your slowdown using a sliding window.
 
 # Links
 
