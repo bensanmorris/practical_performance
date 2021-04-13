@@ -34,6 +34,18 @@ Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly id
 2. for a quick summary let's grab the python ValgrindCI tool: `python -m pip install ValgrindCI --user`
 3. for a summary: `valgrind-ci ./output_file.xml --summary` or to use it as part of CI and abort on errors: `valgrind-ci ./output_file.xml --abort-on-errors`
 
+## a small memory profiling utility
+
+I've created a small [memory monitor](memory_monitor.h) that you can drop into your google tests as follows:
+
+```
+MEMORY_MONITOR_BEGIN
+    // your test code
+MEMORY_MONITOR_END
+ASSERT_LT(meminfo.process_pmem, 1024 * 1024 * 1024 * 1.5 /* eg assert peak physical memory consumption during test was < 1.5GB */);
+
+```
+
 # Locating performance regressions
 
 See [Differential Flamegraphs](http://www.brendangregg.com/blog/2014-11-09/differential-flame-graphs.html)
