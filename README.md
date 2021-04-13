@@ -51,3 +51,7 @@ ASSERT_LT(meminfo.process_pmem, 1024 * 1024 * 1024 * 1.5 /* eg assert peak physi
 See [Differential Flamegraphs](http://www.brendangregg.com/blog/2014-11-09/differential-flame-graphs.html)
 
 TODO - add worked example
+
+# Links
+
+- Agner Fog's CPU optimisation manual: https://www.agner.org/optimize/optimizing_cpp.pdf
