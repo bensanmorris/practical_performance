@@ -56,7 +56,7 @@ TODO - add worked example
 
 [I've created a small python utility that generates a chart for each of your google benchmarks as a time series](https://github.com/bensanmorris/benchmark_monitor) (run it over your accumulated benchmark history data) but it also attempts to estimate the location of the build that introduced your slowdown using a sliding window.
 
-# Computer Vision Performance Optimisation
+# Computer Vision Performance Profiling / Optimisation
 
 Coming soon
 
