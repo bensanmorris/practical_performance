@@ -58,7 +58,7 @@ TODO - add worked example
 
 # Computer Vision Performance Profiling / Optimisation
 
-Coming soon
+- [Profiling OpenCV Applications](https://github.com/opencv/opencv/wiki/Profiling-OpenCV-Applications)
 
 # Links
 
