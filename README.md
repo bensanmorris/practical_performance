@@ -64,6 +64,12 @@ How to profile OpenCV apps:
 - run your app
 - generate a top 10 most costly OpenCV functions report as follows: `[opencv_repo_location]/modules/ts/misc/trace_profiler.py [your_opencv_trace_dir]/OpenCVTrace.txt 10`
 
+# OpenCV and multi-threading
+
+- you can influence the number of internal threads used by OpenCV viz the `cv::setNumThreads()` call however...
+- if you do this and profile you will notice that by and large OpenCV internally processes most of its work under a single thread
+- lesson: if you want better cpu utilisation then perform application level threading (calling OpenCV from multiple threads in your application where your operations are parallelisable) 
+
 # Links
 
 - Agner Fog's CPU optimisation manual: https://www.agner.org/optimize/optimizing_cpp.pdf
