@@ -62,12 +62,12 @@ How to profile OpenCV apps:
 
 - set OPENCV_TRACE=1 environment variable (and optionally OPENCV_TRACE_LOCATION to the path to write the OpenCV trace logs to)
 - run your app
-- generate a top 10 most costly OpenCV functions report as follows: `[opencv_repo_location]/modules/ts/misc/trace_profiler.py [your_opencv_trace_dir]/OpenCVTrace.txt 10`
+- generate a top 10 most costly OpenCV functions report as follows: `[opencv_repo_location]/modules/ts/misc/trace_profiler.py [your_opencv_trace_dir]/OpenCVTrace.txt 10` . NB. this report includes run time cost as well as the thread id of the calling thread - useful when trying to evaluate cpu usage
 
 # OpenCV and multi-threading
 
 - you can influence the number of internal threads used by OpenCV viz the `cv::setNumThreads()` call however...
-- if you do this and profile you will notice that by and large OpenCV internally processes most of its work under a single thread
+- if you do this and profile you will notice that by and large OpenCV internally processes most of its work under a single thread (see above on how to profile OpenCV apps)
 - lesson: if you want better cpu utilisation then perform application level threading (calling OpenCV from multiple threads in your application where your operations are parallelisable) 
 
 # Links
