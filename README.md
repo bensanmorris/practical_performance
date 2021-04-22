@@ -58,8 +58,13 @@ TODO - add worked example
 
 # Computer Vision Performance Profiling / Optimisation
 
-- [Profiling OpenCV Applications](https://github.com/opencv/opencv/wiki/Profiling-OpenCV-Applications)
+How to profile OpenCV apps:
+
+- set OPENCV_TRACE=1 environment variable (and optionally OPENCV_TRACE_LOCATION to the path to write the OpenCV trace logs to)
+- run your app
+- generate a top 10 most costly OpenCV functions report as follows: `[opencv_repo_location]/modules/ts/misc/trace_profiler.py [your_opencv_trace_dir]/OpenCVTrace.txt 10`
 
 # Links
 
 - Agner Fog's CPU optimisation manual: https://www.agner.org/optimize/optimizing_cpp.pdf
+- [Profiling OpenCV Applications](https://github.com/opencv/opencv/wiki/Profiling-OpenCV-Applications)
