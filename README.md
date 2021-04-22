@@ -66,9 +66,8 @@ How to profile OpenCV apps:
 
 # OpenCV and multi-threading
 
-- you can influence the number of internal threads used by OpenCV viz the `cv::setNumThreads()` call however...
-- if you do this and profile you will notice that by and large OpenCV internally processes most of its work under a single thread (see above on how to profile OpenCV apps)
-- lesson: if you want better cpu utilisation then perform application level threading (calling OpenCV from multiple threads in your application where your operations are parallelisable) 
+- you can influence the number of internal threads used by OpenCV viz the `cv::setNumThreads()`
+- 
 
 # Links
 
