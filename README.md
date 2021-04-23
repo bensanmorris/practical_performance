@@ -1,6 +1,6 @@
 # TLDR
 
-A short practical guide on code performance analysis.
+A concise practical guide on code performance analysis.
 
 # CPU profiling
 
