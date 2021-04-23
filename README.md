@@ -77,6 +77,10 @@ How to profile OpenCV apps:
 - you can influence the number of internal threads used by OpenCV via the `cv::setNumThreads()`
 - 
 
+# Android
+
+- [Roy Longbottom's extensive benchmarking of Neon](http://www.roylongbottom.org.uk/android%20neon%20benchmarks.htm)
+
 # Performance related YouTube channels and videos
 
 - [What's a Creel](https://www.youtube.com/user/WhatsACreel) - great channel on intrinsics and assembler
