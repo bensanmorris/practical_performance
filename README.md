@@ -50,6 +50,10 @@ ASSERT_LT(meminfo.process_pmem, 1024 * 1024 * 1024 * 1.5 /* eg assert peak physi
 
 ```
 
+# GPU profiling
+
+- [Renderdoc](https://renderdoc.org/) - great for profiling OpenGL / Vulkan apps across a range of platforms (including Android)
+
 # Locating performance regressions
 
 See [Differential Flamegraphs](http://www.brendangregg.com/blog/2014-11-09/differential-flame-graphs.html)
