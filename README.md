@@ -66,7 +66,7 @@ How to profile OpenCV apps:
 
 # OpenCV and multi-threading
 
-- you can influence the number of internal threads used by OpenCV viz the `cv::setNumThreads()`
+- you can influence the number of internal threads used by OpenCV via the `cv::setNumThreads()`
 - 
 
 # Links
