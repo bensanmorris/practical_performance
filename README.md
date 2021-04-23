@@ -77,6 +77,10 @@ How to profile OpenCV apps:
 - you can influence the number of internal threads used by OpenCV via the `cv::setNumThreads()`
 - 
 
+# Performance related YouTube channels and videos
+
+- [What's a Creel](https://www.youtube.com/user/WhatsACreel) - great channel on intrinsics and assembler
+
 # Links
 
 - Agner Fog's CPU optimisation manual: https://www.agner.org/optimize/optimizing_cpp.pdf
