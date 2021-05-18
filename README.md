@@ -72,10 +72,13 @@ How to profile OpenCV apps:
 - run your app
 - generate a top 10 most costly OpenCV functions report as follows: `[opencv_repo_location]/modules/ts/misc/trace_profiler.py [your_opencv_trace_dir]/OpenCVTrace.txt 10` . NB. this report includes run time cost as well as the number of threads that called this function (the "thr" column) - useful when trying to evaluate cpu usage
 
-# OpenCV and multi-threading
+# OpenCV
 
 - you can influence the number of internal threads used by OpenCV via the `cv::setNumThreads()`
-- 
+
+# Tensorflowlite
+
+- [Tensorflowlite performance best practices](https://www.tensorflow.org/lite/performance/best_practices)
 
 # Android
 
