@@ -75,6 +75,7 @@ How to profile OpenCV apps:
 # OpenCV
 
 - you can influence the number of internal threads used by OpenCV via the `cv::setNumThreads()`
+- [OpenCV function call profiling](https://github.com/opencv/opencv/wiki/Profiling-OpenCV-Applications)
 
 # Tensorflowlite
 
