@@ -79,6 +79,7 @@ How to profile OpenCV apps:
 # Tensorflowlite
 
 - [Tensorflowlite performance best practices](https://www.tensorflow.org/lite/performance/best_practices)
+- [Tensorflowlite GPU backend (gpu accelerated tflite)](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/delegates/gpu)
 
 # Android
 
