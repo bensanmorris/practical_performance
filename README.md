@@ -80,7 +80,7 @@ How to profile OpenCV apps:
 
 # Tensorflow
 
-- just use the prebuilt c libs and cppflow
+- just use the prebuilt c libs and cppflow (if they match your target's cpu)
 
 # Tensorflowlite
 
