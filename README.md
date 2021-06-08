@@ -1,4 +1,4 @@
-# TLDR
+# Overview
 
 A concise practical guide on code performance analysis.
 
@@ -52,6 +52,7 @@ ASSERT_LT(meminfo.process_pmem, 1024 * 1024 * 1024 * 1.5 /* eg assert peak physi
 
 # GPU profiling
 
+- [Summary of linux command line utilities for monitoring GPU utilisation](https://www.cyberciti.biz/open-source/command-line-hacks/linux-gpu-monitoring-and-diagnostic-commands/)
 - [Renderdoc](https://renderdoc.org/) - great for profiling OpenGL / Vulkan apps across a range of platforms (including Android)
 
 # Locating performance regressions
