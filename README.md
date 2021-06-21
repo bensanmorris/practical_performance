@@ -86,6 +86,13 @@ How to profile OpenCV apps:
 
 # Tensorflowlite
 
+## Tools
+
+- [Tensorflowlite visualize.py script - generates an HTML page listing your nodes / types and whether they are quantized or not](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/lite/tools/visualize.py)
+- [Netron - a GUI based NN visualizer (supports both TF and TFLite format models)](https://github.com/lutzroeder/Netron)
+
+## Performance
+
 - [Tensorflowlite performance best practices](https://www.tensorflow.org/lite/performance/best_practices)
 - [Tensorflowlite GPU backend (gpu accelerated tflite)](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/delegates/gpu)
 - [Tensorflowlite Neural Net API delegate](https://www.tensorflow.org/lite/performance/nnapi)
