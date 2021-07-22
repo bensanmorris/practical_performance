@@ -74,7 +74,6 @@ How to profile OpenCV apps:
 - generate a top 10 most costly OpenCV functions report as follows: `[opencv_repo_location]/modules/ts/misc/trace_profiler.py [your_opencv_trace_dir]/OpenCVTrace.txt 10` . NB. this report includes run time cost as well as the number of threads that called this function (the "thr" column) - useful when trying to evaluate cpu usage
 
 # OpenCV
-[I'm creating a small OpenCV course for the beginner here](https://github.com/bensanmorris/opencv_for_graphics_programmers)
 
 - you can influence the number of internal threads used by OpenCV via the `cv::setNumThreads()`
 - [OpenCV function call profiling](https://github.com/opencv/opencv/wiki/Profiling-OpenCV-Applications)
