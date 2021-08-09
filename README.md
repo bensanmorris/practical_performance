@@ -13,7 +13,7 @@ Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly id
 3. clone Brendan Gregg's Flamegraph repo: `git clone https://github.com/brendangregg/Flamegraph.git`
 4. clone and build your code (with symbols)
 5. run your code / unit tests under perf. As I use gtest, typically I list my  tests and choose one `[my_gtest_app] --gtest_list_tests`
-6. next, let's run our gtest of interest under perf: `perf record -a -g ./my_gtest_app --gtest_filter=MyTestSuite.MyTest`
+6. next, let's run our gtest of interest under perf: `perf record -a -g ./my_gtest_app --gtest_filter=MyTestSuite.MyTest` ([see here for perf record sampling docs](https://perf.wiki.kernel.org/index.php/Tutorial#Sampling_with_perf_record))
 7. run perf script to generate trace output from perf data: `perf script > out.perf`
 8. next, we'll normalise this data and fold all the call-graphs: `../../Flamegraph/stackcollapse-perf.pl out.perf > out.folded`
 9. now let's generate the flamegraph: `../../Flamegraph/flamegraph.pl out.folded > out.svg`
