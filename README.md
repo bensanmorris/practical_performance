@@ -38,6 +38,14 @@ Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly id
 2. for a quick summary let's grab the python ValgrindCI tool: `python -m pip install ValgrindCI --user`
 3. for a summary: `valgrind-ci ./output_file.xml --summary` or to use it as part of CI and abort on errors: `valgrind-ci ./output_file.xml --abort-on-errors`
 
+## ctest (cmake)
+
+1. `cd [your_cmake_build_dir]`
+2. list your available tests: `ctest -N`
+3. pick a test and run it under valgrind's memcheck tool: `ctest -T memcheck -R my_test_name`
+4. list the generated memory checker reports: `ls -lat [your_cmake_build_dir]/Testing/Temporary/MemoryChecker*`
+5. Fix the leaks - for this start with fixing the **definitely lost** using that description as a search term in your MemoryCheck*.log(s)
+
 # GPU profiling
 
 - [Summary of linux command line utilities for monitoring GPU utilisation](https://www.cyberciti.biz/open-source/command-line-hacks/linux-gpu-monitoring-and-diagnostic-commands/)
