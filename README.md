@@ -4,19 +4,6 @@ A concise practical guide on code performance analysis.
 
 # CPU profiling
 
-## perf
-
-Get a quick snapshot of your app's cache performance:
-
-`sudo perf stat -e task-clock,cycles,instructions,cache-references,cache-misses  ./myapp`
-
-Sample a stat further using perf record:
-
-```
-sudo perf record -e cache-misses ./myapp
-sudo perf report --stdio
-```
-
 ## CPU Flamegraphs
 
 Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly identify code hotspots. 
@@ -51,6 +38,19 @@ sudo perf mem record -a -g -- ./my_app
 sudo perf script > out.perf
 git clone https://github.com/brendangregg/Flamegraph.git
 sudo ./Flamegraph/stackcollapse-perf.pl < out.perf | ./Flamegraph/flamegraph.pl --color=mem --title="my_app Heap Expansion Flame Graph" --countname="calls" > out.svg
+```
+
+## Cache stats (via perf)
+
+Get a quick snapshot of your app's cache performance:
+
+`sudo perf stat -e task-clock,cycles,instructions,cache-references,cache-misses  ./myapp`
+
+Sample a stat further using perf record:
+
+```
+sudo perf record -e cache-misses ./myapp
+sudo perf report --stdio
 ```
 
 ## valgrind + massif
