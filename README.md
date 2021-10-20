@@ -4,6 +4,16 @@ A concise practical guide on code performance analysis.
 
 # CPU profiling
 
+## perf
+
+Get a quick snapshot of your app's cache performance:
+
+`perf stat -e task-clock,cycles,instructions,cache-references,cache-misses  ./myapp`
+
+Sample a stat further using perf record:
+
+`perf record -e cache-misses ./myapp`
+
 ## CPU Flamegraphs
 
 Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly identify code hotspots. 
