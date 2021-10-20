@@ -12,10 +12,11 @@ Get a quick snapshot of your app's cache performance:
 
 Sample a stat further using perf record:
 
-```
-sudo perf record -e cache-misses ./myapp
-sudo perf report --stdio
-```
+`sudo perf record -e cache-misses ./myapp`
+
+Print a summary report:
+
+`sudo perf report --stdio`
 
 ## CPU Flamegraphs
 
