@@ -119,5 +119,6 @@ How to profile OpenCV apps:
 - [Brendan Gregg's memory flamegraphs](https://www.brendangregg.com/FlameGraphs/memoryflamegraphs.html)
 - [Brendan Gregg's differential Flamegraphs](http://www.brendangregg.com/blog/2014-11-09/differential-flame-graphs.html)
 - [Linux perf examples](https://www.brendangregg.com/perf.html)
+- [Perf mem reference](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/monitoring_and_managing_system_status_and_performance/profiling-memory-accesses-with-perf-mem_monitoring-and-managing-system-status-and-performance)
 - Agner Fogg's C++ optimisation manual: https://www.agner.org/optimize/optimizing_cpp.pdf
 - [Profiling OpenCV Applications](https://github.com/opencv/opencv/wiki/Profiling-OpenCV-Applications)
