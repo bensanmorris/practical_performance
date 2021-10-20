@@ -8,11 +8,11 @@ A concise practical guide on code performance analysis.
 
 Get a quick snapshot of your app's cache performance:
 
-`perf stat -e task-clock,cycles,instructions,cache-references,cache-misses  ./myapp`
+`sudo perf stat -e task-clock,cycles,instructions,cache-references,cache-misses  ./myapp`
 
 Sample a stat further using perf record:
 
-`perf record -e cache-misses ./myapp`
+`sudo perf record -e cache-misses ./myapp`
 
 ## CPU Flamegraphs
 
