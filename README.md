@@ -4,9 +4,9 @@ A concise practical guide on code performance analysis.
 
 # CPU profiling
 
-## Flamegraphs
+## CPU Flamegraphs
 
-CPU Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly identify code hotspots. 
+Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly identify code hotspots. 
 
 1. Launch your linux docker container with SYS_ADMIN capabilities: `docker run --privileged --cap-add SYS_ADMIN -t [your_image_id] /bin/bash` . From this point forward we are inside our launched container
 2. `sudo sysctl -w kernel.kptr_restrict=0` and `sudo sysctl -w kernel.perf_event_paranoid=1`
