@@ -31,10 +31,10 @@ Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly id
 
 [See Brendan Gregg's Memory Flamegraphs](https://www.brendangregg.com/FlameGraphs/memoryflamegraphs.html)
 
-eg. (for his brk() syscall approach):
+eg. using perf mem:
 
 ```
-sudo perf record -e syscalls:sys_enter_brk -a -g -- ./my_app
+sudo perf mem record -a -g -- ./my_app
 sudo perf script > out.perf
 git clone https://github.com/brendangregg/Flamegraph.git
 sudo ./Flamegraph/stackcollapse-perf.pl < out.perf | ./Flamegraph/flamegraph.pl --color=mem --title="my_app Heap Expansion Flame Graph" --countname="calls" > out.svg
