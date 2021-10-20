@@ -14,15 +14,6 @@ Sample a stat further using perf record:
 
 `sudo perf record -e cache-misses ./myapp`
 
-Creating a visualisation using Brendan Gregg's flamegraph utils:
-
-```
-sudo perf perf record -e cache-misses -- ./my_app
-sudo perf script > out.perf
-git clone https://github.com/brendangregg/Flamegraph.git
-sudo ./Flamegraph/stackcollapse-perf.pl < out.perf | ./Flamegraph/flamegraph.pl --color=mem --title="my_app cache misses" --countname="calls" > out.svg
-```
-
 ## CPU Flamegraphs
 
 Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly identify code hotspots. 
