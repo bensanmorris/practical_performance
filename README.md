@@ -114,7 +114,9 @@ How to profile OpenCV apps:
 
 - [What's a Creel](https://www.youtube.com/user/WhatsACreel) - great channel on intrinsics and assembler
 
-# Links
+# References
 
-- Agner Fog's CPU optimisation manual: https://www.agner.org/optimize/optimizing_cpp.pdf
+- [Brendan Gregg's memory flamegraphs](https://www.brendangregg.com/FlameGraphs/memoryflamegraphs.html)
+- [Brendan Gregg's differential Flamegraphs](http://www.brendangregg.com/blog/2014-11-09/differential-flame-graphs.html)
+- Agner Fogg's CPU optimisation manual: https://www.agner.org/optimize/optimizing_cpp.pdf
 - [Profiling OpenCV Applications](https://github.com/opencv/opencv/wiki/Profiling-OpenCV-Applications)
