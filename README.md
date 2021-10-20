@@ -27,6 +27,10 @@ Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly id
 
 # Memory profiling
 
+## Flamegraphs
+
+[See Brendan Gregg's Memory Flamegraphs](https://www.brendangregg.com/FlameGraphs/memoryflamegraphs.html)
+
 ## valgrind + massif
 
 1. `valgrind --tool=massif --xtree-memory=full ./your_gtest_app --gtest_filter=your_test_suite.your_test`
