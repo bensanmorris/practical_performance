@@ -45,7 +45,7 @@ Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly id
 
 [See Brendan Gregg's Memory Flamegraphs](https://www.brendangregg.com/FlameGraphs/memoryflamegraphs.html)
 
-eg. using perf mem [perf mem reference](https://www.man7.org/linux/man-pages/man1/perf-mem.1.html) and ([redhat guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/monitoring_and_managing_system_status_and_performance/profiling-memory-accesses-with-perf-mem_monitoring-and-managing-system-status-and-performance)):
+eg. using perf mem [perf mem reference](https://www.man7.org/linux/man-pages/man1/perf-mem.1.html) and [redhat perf mem guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/monitoring_and_managing_system_status_and_performance/profiling-memory-accesses-with-perf-mem_monitoring-and-managing-system-status-and-performance):
 
 ```
 sudo perf mem record -a -g -- ./my_app
