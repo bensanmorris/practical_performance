@@ -45,13 +45,14 @@ Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly id
 
 [See Brendan Gregg's Memory Flamegraphs](https://www.brendangregg.com/FlameGraphs/memoryflamegraphs.html)
 
-eg. using perf mem [perf mem reference](https://www.man7.org/linux/man-pages/man1/perf-mem.1.html) and [redhat perf mem guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/monitoring_and_managing_system_status_and_performance/profiling-memory-accesses-with-perf-mem_monitoring-and-managing-system-status-and-performance):
+## perf mem
+
+[perf mem reference](https://www.man7.org/linux/man-pages/man1/perf-mem.1.html) and [redhat perf mem guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/monitoring_and_managing_system_status_and_performance/profiling-memory-accesses-with-perf-mem_monitoring-and-managing-system-status-and-performance):
 
 ```
-sudo perf mem record -a -g -- ./my_app
-sudo perf script > out.perf
-git clone https://github.com/brendangregg/Flamegraph.git
-sudo ./Flamegraph/stackcollapse-perf.pl < out.perf | ./Flamegraph/flamegraph.pl --color=mem --title="my_app Heap Expansion Flame Graph" --countname="calls" > out.svg
+(start your app then...)
+sudo perf mem record -a sleep 30
+perf mem report
 ```
 
 ## valgrind + massif
