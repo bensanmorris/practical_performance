@@ -123,6 +123,13 @@ How to profile OpenCV apps:
 
 # Android
 
+## CMake
+
+NB. setting `ANDROID_ARM_NEON=ON` will globally enable NEON in CMake based projects but if using NDK >= 21 then NEON is enabled by default.
+
+## Refs
+
+- [Android Neon support](https://developer.android.com/ndk/guides/cpu-arm-neon#cmake)
 - [Roy Longbottom's extensive benchmarking of Neon](http://www.roylongbottom.org.uk/android%20neon%20benchmarks.htm)
 
 # Performance related YouTube channels and videos
