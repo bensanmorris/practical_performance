@@ -51,7 +51,7 @@ Install bpf utilities:
 ```
 sudo apt-get install bpfcc-tools linux-headers-$(uname -r)
 ```
-Next, launch your app and grab its pid, then: ```sudo memleak-bpfcc -p123``` replacing ***123*** with your app's process id
+Next, launch your app and grab its pid, then: ```sudo memleak-bpfcc -p123 -a``` replacing ***123*** with your app's process id. [memleak-bpfcc docs](https://manpages.debian.org/unstable/bpfcc-tools/memleak-bpfcc.8.en.html)
 
 ## perf mem
 
