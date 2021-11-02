@@ -45,6 +45,14 @@ Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly id
 
 [See Brendan Gregg's Memory Flamegraphs](https://www.brendangregg.com/FlameGraphs/memoryflamegraphs.html)
 
+## Finding leaks with eBPF
+
+Install bpf utilities:
+```
+sudo apt-get install bpfcc-tools linux-headers-$(uname -r)
+```
+Next, launch your app and grab its pid, then: ```sudo memleak-bpfcc -p123``` replacing ***123*** with your app's process id
+
 ## perf mem
 
 [perf mem reference](https://www.man7.org/linux/man-pages/man1/perf-mem.1.html) and [redhat perf mem guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/monitoring_and_managing_system_status_and_performance/profiling-memory-accesses-with-perf-mem_monitoring-and-managing-system-status-and-performance):
