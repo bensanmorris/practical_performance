@@ -53,6 +53,8 @@ sudo apt-get install bpfcc-tools linux-headers-$(uname -r)
 ```
 Next, launch your app and grab its pid, then: ```sudo memleak-bpfcc -p123 -a``` replacing ***123*** with your app's process id. [memleak-bpfcc docs](https://manpages.debian.org/unstable/bpfcc-tools/memleak-bpfcc.8.en.html)
 
+NB. The beauty of `memleak-bpfcc` is it shows you memory that was allocated but hasn't been reclaimed which may not be a leak as such. For instance, like me you may be filling an `std::vector` with values (which results in allocations) and then you clear it with `clear()` (which doesn't reclaim the memory) as you intend to re-use it later in your app. This may be problematic as you have allocated memory (in your long living `vector`) but are not reclaiming it but isn't a hard and fast rule, you'll need to judge for yourself. For me it was a problem so instead I replaced my periodic `clear()` with swapping an empty vector's contents into my long life vector to force it to reclaim which resulted in quite a large memory saving. This is mentioned in `std::vector::clear()` docs.
+
 ## perf mem
 
 [perf mem reference](https://www.man7.org/linux/man-pages/man1/perf-mem.1.html) and [redhat perf mem guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/monitoring_and_managing_system_status_and_performance/profiling-memory-accesses-with-perf-mem_monitoring-and-managing-system-status-and-performance):
