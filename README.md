@@ -35,7 +35,7 @@ Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly id
 11. let's copy the out.svg from our container to our host. In a separate shell (i.e. outside our container), obtain your running container's name: `docker ps` then: `docker cp your_container_name:/your/out.svg/location/out.svg .`
 12. open it in an svg viewer (a web browser for instance)
 
-You might add the above to your build test script, which, assuming you have a ctest test named ***test_Performance*** may be as simple as follows:
+You might generate a flamegraph as part of your product's build script, which (assuming you have a ctest test named ***test_Performance***) may be as simple as:
 ```
 if [ -d Flamegraph  ]; then
     git clone https://github.com/brendangregg/Flamegraph.git
