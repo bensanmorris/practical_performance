@@ -35,19 +35,6 @@ Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly id
 11. let's copy the out.svg from our container to our host. In a separate shell (i.e. outside our container), obtain your running container's name: `docker ps` then: `docker cp your_container_name:/your/out.svg/location/out.svg .`
 12. open it in an svg viewer (a web browser for instance)
 
-Encapsulated into a simple script (requires executing user is a sudoer):
-```
-#!/bin/bash
-process=$@
-if [ ! -d Flamegraph ]; then
-    git clone https://github.com/brendangregg/Flamegraph.git
-fi
-perf record -a -g $process
-perf script > out.perf
-Flamegraph/stackcollapse-perf.pl out.perf > out.folded
-Flamegraph/flamegraph.pl out.folded > flamegraph.svg
-```
-
 ## Other tools
 
 - [Intel VTune Profiler](https://software.intel.com/content/www/us/en/develop/documentation/vtune-help/top.html) - Good for getting an overview of your app's utilisation of CPU across your app's threads (red = spinning, green = good utilisation).
