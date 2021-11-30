@@ -42,7 +42,7 @@ process=$@
 if [ ! -d Flamegraph ]; then
     git clone https://github.com/brendangregg/Flamegraph.git
 fi
-perf record -a -g ctest -C Release -R $process
+perf record -a -g $process
 perf script > out.perf
 Flamegraph/stackcollapse-perf.pl out.perf > out.folded
 Flamegraph/flamegraph.pl out.folded > flamegraph.svg
