@@ -110,6 +110,40 @@ TODO - add worked example
 
 [I've created a small python utility that generates a chart for each of your google benchmarks as a time series](https://github.com/bensanmorris/benchmark_monitor) (run it over your accumulated benchmark history data) but it also attempts to estimate the location of the build that introduced your slowdown using a sliding window.
 
+# C++
+
+An evolving list of C++ performance related features and platform specifics.
+
+## Language
+
+Work in progress
+
+## Windows
+
+Some performance related compiler and enhanced debugging options worth exploring - use with care as they simpligy reverse engineering (frame pointer and symbol options):
+
+```
+if(WIN32)
+    # /MD   - Multi-threaded runtime
+    # /Ox   - Full optimization
+    # /Oi   - Use intrinsic functions
+    # /Oy-  - Don't omit frame pointer
+    # /GS-  - No stack buffer overflow checks
+    # /EHsc - C++-only exception handling semantics
+    set(optimization_flags "/MD /Ox /Oi /Oy- /DNDEBUG /GS- /EHsc")
+    # /Zi   - Output debugging information
+    # /Zo   - Enhanced debug info for optimized builds
+    set(CMAKE_C_FLAGS_RELEASE          "${optimization_flags} /Zi"     CACHE STRING "" FORCE)
+    set(CMAKE_CXX_FLAGS_RELEASE        "${optimization_flags} /Zi"     CACHE STRING "" FORCE)
+    set(CMAKE_C_FLAGS_RELWITHDEBINFO   "${optimization_flags} /Zi /Zo" CACHE STRING "" FORCE)
+    set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${optimization_flags} /Zi /Zo" CACHE STRING "" FORCE)
+endif()
+```
+
+## linux
+
+- Use the gold linker: pass this to your `cmake -G etc` line to use the faster gold linker on linux: `-DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=gold`
+
 # Computer Vision Performance Profiling / Optimisation
 
 How to profile OpenCV apps:
