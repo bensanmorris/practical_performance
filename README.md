@@ -120,7 +120,7 @@ Work in progress
 
 ## Windows
 
-Some performance related compiler and enhanced debugging options worth exploring - use with care as they simplify reverse engineering (frame pointer and symbol options) also intrinsics may reduce the portability of your code (so make sure your build machine's instruction set is supported on your target architecture or alternatively avoid intrinsics):
+Some performance related compiler and enhanced debugging options worth exploring - use with care as they simplify reverse engineering (frame pointer and symbol options) also intrinsics may reduce the portability of your code (so make sure your build machine's instruction set is supported on your target architecture or alternatively be explicit about the ISA(s) you're targetting or simply avoid intrinsics):
 
 ```
 if(WIN32)
