@@ -120,7 +120,7 @@ Work in progress
 
 ## Windows
 
-Some performance related compiler and enhanced debugging options worth exploring - use with care as they simpligy reverse engineering (frame pointer and symbol options):
+Some performance related compiler and enhanced debugging options worth exploring - use with care as they simplify reverse engineering (frame pointer and symbol options):
 
 ```
 if(WIN32)
