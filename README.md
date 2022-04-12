@@ -161,7 +161,37 @@ NB. setting `ANDROID_ARM_NEON=ON` will globally enable NEON in CMake based proje
 
 In my side project I programatically create a benchmark (using google benchmark) for each 3d game scene in a set of scenes to put my engine's performance through its paces. Then, as part of a CI build I run those benchmarks and feed the results to [my google benchmark charting project that generates a chart for each of your google benchmarks as a time series](https://github.com/bensanmorris/benchmark_monitor). The code (that you will need to modify) to adapt to your engine / scenes is as follows:
 
-(my C++ google benchmark code that prgramatically creates a benchmark for each scene defined in the `scenes` variable)
+First, the `CMakeLists.txt` file that pulls in google benchmark (+ my engine - adapt to your own libs):
+
+```
+set(BENCHMARK_ENABLE_TESTING FALSE)
+set(BENCHMARK_ENABLE_INSTALL FALSE)
+include(FetchContent)
+FetchContent_Declare(googlebenchmark
+    GIT_REPOSITORY https://github.com/google/benchmark
+    GIT_TAG        "v1.5.4"
+)
+FetchContent_MakeAvailable(googlebenchmark)
+
+include_directories(${FIREFLY_INCLUDE_DIRS}
+    ${OPENGL_INCLUDE_DIRS}
+    ${SDL2_INCLUDE_DIR})
+
+add_executable(firefly_benchmarks benchmarks.cpp)
+
+target_link_libraries(firefly_benchmarks
+    benchmark::benchmark
+    ${OPENGL_LIBRARIES}
+    ${SDL2_LIBRARY}
+    ${FIREFLY_LIBRARIES})
+
+add_custom_command(TARGET firefly_benchmarks
+    POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/benchmarks $<TARGET_FILE_DIR:firefly_benchmarks>/benchmarks)
+
+```
+
+Now for my `benchmarks.cpp` (my c++ google benchmark code that prgramatically creates a benchmark for each scene defined in the `scenes` variable):
+
 ```
 #include <benchmark/benchmark.h>
 #include <unordered_map>
