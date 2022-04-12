@@ -159,7 +159,7 @@ NB. setting `ANDROID_ARM_NEON=ON` will globally enable NEON in CMake based proje
 
 # Ideas on how to not release slower code
 
-In my side project I programatically create a benchmark (using google benchmark) for each 3d game scene in a set of scenes to put my engine's performance through its paces. Then, as part of a CI build I run those benchmarks and feed the results to [my google benchmark charting project that generates a chart for each of your google benchmarks as a time series](https://github.com/bensanmorris/benchmark_monitor). The code (that you will need to modify) to adapt to your engine / scenes is as follows:
+You may already be using benchmarks as an early warning system with respect to performance regression detection in your game engine / software but in case you aren't, this may be useful. In my side project I programatically create a benchmark (using google benchmark) for each 3d game scene in a set of scenes to put my engine's performance through its paces. Then, as part of a CI build I run those benchmarks and feed the results to [my google benchmark charting project that generates a chart for each of your google benchmarks as a time series](https://github.com/bensanmorris/benchmark_monitor). The code (that you will need to modify) to adapt to your engine / scenes is as follows:
 
 First, the `CMakeLists.txt` file that pulls in google benchmark (+ my engine - adapt to your own libs):
 
