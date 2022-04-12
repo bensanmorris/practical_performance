@@ -157,6 +157,143 @@ NB. setting `ANDROID_ARM_NEON=ON` will globally enable NEON in CMake based proje
 - [Android Neon support](https://developer.android.com/ndk/guides/cpu-arm-neon#cmake)
 - [Roy Longbottom's extensive benchmarking of Neon](http://www.roylongbottom.org.uk/android%20neon%20benchmarks.htm)
 
+# Ideas on how to not release slower code
+
+In my side project I programatically create a benchmark (using google benchmark) for each 3d game scene in a set of scenes to put my engine's performance through its paces. Then, as part of a CI build I run those benchmarks and feed the results to [my google benchmark charting project that generates a chart for each of your google benchmarks as a time series](https://github.com/bensanmorris/benchmark_monitor). The code (that you will need to modify) to adapt to your engine / scenes is as follows:
+
+(my C++ google benchmark code that prgramatically creates a benchmark for each scene defined in the `scenes` variable)
+```
+#include <benchmark/benchmark.h>
+#include <unordered_map>
+#include <vector>
+#include <set>
+#include <firefly.h>
+using namespace firefly;
+
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_opengl.h>
+
+static const int SCREEN_WIDTH  = 640;
+static const int SCREEN_HEIGHT = 480;
+SDL_Window*   displayWindow    = 0;
+SDL_GLContext displayContext;
+
+auto BenchmarkScene = [](benchmark::State& st, std::string sceneFilePath)
+{
+    size_t frames = 0;
+    auto scene = SDK::GetInstance().Load(sceneFilePath);
+    for(auto _ : st)
+    {
+        SDL_Event e;
+        while (SDL_PollEvent(&e))
+        {
+            switch(e.type)
+            {
+                case SDL_WINDOWEVENT:
+                {
+                    switch(e.window.event)
+                    {
+                        case SDL_WINDOWEVENT_RESIZED:
+                        {
+                            firefly::SDK::GetInstance().OnSize(e.window.data1, e.window.data2);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        SDK::GetInstance().Update(*scene);
+        SDL_GL_SwapWindow(displayWindow);
+        frames++;
+    }
+    scene->Release();
+    firefly::SDK::GetInstance().Reset();
+};
+
+int main(int argc, char** argv)
+{
+    std::vector<std::string> scenes = {
+        "BallOnPlatform.msf",
+        "TiledGrass.msf"
+    };
+
+    SDL_Init(SDL_INIT_VIDEO);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, FIREFLY_GL_MAJOR_VERSION);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, FIREFLY_GL_MINOR_VERSION);
+    if(FIREFLY_GL_MAJOR_VERSION >= 3 && FIREFLY_GL_MINOR_VERSION >= 3)
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    displayWindow = SDL_CreateWindow("",
+                                      SDL_WINDOWPOS_UNDEFINED,
+                                      SDL_WINDOWPOS_UNDEFINED,
+                                      SCREEN_WIDTH,
+                                      SCREEN_HEIGHT,
+                                      SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
+    displayContext = SDL_GL_CreateContext(displayWindow);
+    SDL_GL_SetSwapInterval(0);
+    firefly::SDKSettings sdkSettings;
+    sdkSettings.renderer = firefly::RendererManager::OPENGL;
+    sdkSettings.device   = 0;
+    sdkSettings.loadProc = (firefly::IRenderer::GLADloadproc)SDL_GL_GetProcAddress;
+    sdkSettings.window   = displayWindow;
+    firefly::SDK::GetInstance().Initialise(sdkSettings);
+    firefly::SDK::GetInstance().OnSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+    for(auto& scene : scenes)
+    {
+#if FIREFLY_PLATFORM == PLATFORM_LINUX
+        auto benchmark = benchmark::RegisterBenchmark(scene.c_str(),
+                                     BenchmarkScene,
+                                     firefly::GetFireflyDir() + "../bin/benchmarks/" + scene);
+        benchmark->Iterations(200);
+        benchmark->Unit(benchmark::kMillisecond);
+#endif
+    }
+    benchmark::Initialize(&argc, argv);
+    benchmark::RunSpecifiedBenchmarks();
+    firefly::SDK::GetInstance().Destroy();
+	return 0;
+}
+
+```
+This effectively creates a `firefly_benchmarks` executable (firefly being my internal side project's name). I then invoke this (on linux) as follows as part of my build:
+
+```
+#!/bin/bash
+
+if [ ! -d benchmarking ]; then
+    mkdir benchmarking
+fi
+
+cd benchmarking
+
+if [ ! -d benchmark_monitor ]; then
+    git clone https://github.com/bensanmorris/benchmark_monitor.git
+    cd benchmark_monitor
+
+    python3 -m venv env
+    env/Scripts/activate
+    pip3 install -r requirements.txt    
+
+    cd ..
+fi
+
+counter=1
+while [ $counter -le 30 ]
+do
+    echo $counter
+    ./../bin/firefly_benchmarks --benchmark_out=benchmark_$counter.json && python3 ./benchmark_monitor/benchmark_monitor.py -d . -w 6 -a 0.01
+    ((counter++))
+done
+
+rm -rf benchmark_monitor
+rm benchmark_*.zip
+timestamp=$(date +%s)
+zip -r benchmark_$timestamp.zip .
+cp ./benchmark_$timestamp.zip ../../benchmarks
+```
+
+It's not very sophisticated but the end result is a sequence of charts for each benchmarked scene that I then compare to the previous release. I have managed to not release a few performance regressions as a result of this so hope it's of use to you.
+
 # Performance related YouTube channels and videos
 
 - [What's a Creel](https://www.youtube.com/user/WhatsACreel) - great channel on intrinsics and assembler
