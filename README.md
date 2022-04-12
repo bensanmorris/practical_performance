@@ -190,7 +190,7 @@ add_custom_command(TARGET firefly_benchmarks
 
 ```
 
-Now for my `benchmarks.cpp` (my c++ google benchmark code that prgramatically creates a benchmark for each scene defined in the `scenes` variable):
+Next, here's `benchmarks.cpp` (my c++ google benchmark code that prgramatically creates a benchmark for each scene defined in the `scenes` variable, again, adapt to your own engine):
 
 ```
 #include <benchmark/benchmark.h>
