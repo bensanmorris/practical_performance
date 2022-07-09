@@ -36,13 +36,14 @@ Flamegraphs (created by Brendan Gregg) are very useful in helping you quickly id
 12. open it in an svg viewer (a web browser for instance)
 
 The above summarised:
+NB. To install perf (on Ubuntu): `sudo apt-get install linux-tools`
 ```
 #!/bin/bash
 process=$@
 if [ ! -d Flamegraph ]; then
     git clone https://github.com/brendangregg/Flamegraph.git
 fi
-perf record -a -g $process
+perf record -g -p $process
 perf script > out.perf
 Flamegraph/stackcollapse-perf.pl out.perf > out.folded
 Flamegraph/flamegraph.pl out.folded > flamegraph.svg
