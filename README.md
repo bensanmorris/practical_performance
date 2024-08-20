@@ -67,6 +67,12 @@ sudo apt-get install bpfcc-tools linux-headers-$(uname -r)
 ```
 Next, launch your app and grab its pid, then: ```sudo memleak-bpfcc -p123 -a``` replacing ***123*** with your app's process id. [memleak-bpfcc docs](https://manpages.debian.org/unstable/bpfcc-tools/memleak-bpfcc.8.en.html)
 
+Links
+
+- [BCC docs](https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md#bpf-c)
+- [Linux kernel tracepoints docs](https://www.kernel.org/doc/html/v4.17/trace/tracepoints.html)
+- [Linux kernel tracepoint headers - for details on tracepoint parameters](https://github.com/torvalds/linux/tree/master/include/trace/events)
+
 ## perf mem
 
 [perf mem reference](https://www.man7.org/linux/man-pages/man1/perf-mem.1.html) and [redhat perf mem guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/monitoring_and_managing_system_status_and_performance/profiling-memory-accesses-with-perf-mem_monitoring-and-managing-system-status-and-performance):
