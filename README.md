@@ -72,6 +72,7 @@ Links
 - [BCC docs](https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md#bpf-c)
 - [Linux kernel tracepoints docs](https://www.kernel.org/doc/html/v4.17/trace/tracepoints.html)
 - [Linux kernel tracepoint headers - for details on tracepoint parameters](https://github.com/torvalds/linux/tree/master/include/trace/events)
+- [uprobes - user space call capture example](https://eunomia.dev/tutorials/5-uprobe-bashreadline/#capturing-readline-function-calls-in-bash-using-uprobe)
 
 ## perf mem
 
